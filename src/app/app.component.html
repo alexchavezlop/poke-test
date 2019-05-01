@@ -1,0 +1,63 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1 class="margin-top-10">
+    Welcome to Poke-Test!
+  </h1>
+</div>
+
+<div class="margin-top-30">
+  <div>
+    <input type="text" id="poke-name-find-name" [(ngModel)]="pokeName">
+    <input type="button" id="search-poke-btn" (click)="getPoke()" value="Search" class="btn btn-primary margin-left-10">
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+      <h2>Current Poke</h2>
+
+      <div *ngIf="currentPoke" id="current-poke-div" class="catched-box current-poke-div">
+          <div>
+              <strong>Id:</strong> {{currentPoke.id}}
+            </div>
+            <div>
+              <strong>Name:</strong> {{currentPoke.name}}
+            </div>
+            <div>
+              <img src="{{currentPoke.sprites.front_default}}"/>
+            </div>
+            <div>
+              <input type="button" value="Catch Poke" (click)="catchPke()" class="btn btn-primary">
+            </div>
+      </div>
+
+      <div *ngIf="!currentPoke">
+          No pokemon was searched
+      </div>
+      
+    </div>
+  
+    <div class="col-6">
+      <h2>Catched Pokes</h2>
+
+      <div *ngIf="pokes.length === 0">
+        No pokemon captured yet
+      </div>
+      <div *ngIf="pokes.length !== 0">
+        <div *ngFor="let pok of pokes" class="catched-box poke-catched">
+          <div>
+            <strong>Id:</strong> {{pok.id}}
+          </div>
+          <div>
+            <strong>Name:</strong> {{pok.name}}
+          </div>
+          <div>
+            <img src="{{pok.sprites.front_default}}"/>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+</div>
+
